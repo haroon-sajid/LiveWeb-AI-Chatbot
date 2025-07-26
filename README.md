@@ -106,5 +106,4 @@ The application will be available at:
 
 ## License
 
-[Add your license information here]
-
+This project is currently unlicensed. You may use the code for personal or educational purposes.  
