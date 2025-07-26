@@ -173,22 +173,22 @@ async def chat_stream(message: str, request: Request, checkpoint_id: Optional[st
     try:
         ip = request.client.host
 
-        # Track how many requests this IP has made
-        if ip not in ip_cache:
-            ip_cache[ip] = {"count": 1}
-        else:
-            ip_cache[ip]["count"] += 1
+        # # Track how many requests this IP has made
+        # if ip not in ip_cache:
+        #     ip_cache[ip] = {"count": 1}
+        # else:
+        #     ip_cache[ip]["count"] += 1
 
-        # Deny if more than 3 requests
-        if ip_cache[ip]["count"] > 3:
-            apology_message = {
-                "type": "limit",
-                "message": "❗ Request limit reached. Only 3 requests per user are allowed."
-            }
-            return StreamingResponse(
-                iter([f"data: {json.dumps(apology_message)}\n\n"]),
-                media_type="text/event-stream"
-            )
+        # # Deny if more than 3 requests
+        # if ip_cache[ip]["count"] > 3:
+        #     apology_message = {
+        #         "type": "limit",
+        #         "message": "❗ Request limit reached. Only 3 requests per user are allowed."
+        #     }
+        #     return StreamingResponse(
+        #         iter([f"data: {json.dumps(apology_message)}\n\n"]),
+        #         media_type="text/event-stream"
+        #     )
 
         # Allow the request
         return StreamingResponse(
